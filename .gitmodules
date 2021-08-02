@@ -1,0 +1,4 @@
+[submodule "TestSNAP"]
+	path = TestSNAP
+	url = https://github.com/rgayatri23/TestSNAP
+	branch = Kokkos-nvhpc
