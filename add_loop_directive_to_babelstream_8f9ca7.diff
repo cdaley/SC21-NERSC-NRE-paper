@@ -1,0 +1,133 @@
+diff --git a/OMPStream.cpp b/OMPStream.cpp
+index 0cd8035..9333a5b 100644
+--- a/OMPStream.cpp
++++ b/OMPStream.cpp
+@@ -59,7 +59,11 @@ void OMPStream<T>::init_arrays(T initA, T initB, T initC)
+   T *a = this->a;
+   T *b = this->b;
+   T *c = this->c;
++#ifdef USE_LOOP
++  #pragma omp target teams loop
++#else
+   #pragma omp target teams distribute parallel for simd
++#endif
+ #else
+   #pragma omp parallel for
+ #endif
+@@ -105,7 +109,11 @@ void OMPStream<T>::copy()
+   int array_size = this->array_size;
+   T *a = this->a;
+   T *c = this->c;
++#ifdef USE_LOOP
++  #pragma omp target teams loop
++#else
+   #pragma omp target teams distribute parallel for simd
++#endif
+ #else
+   #pragma omp parallel for
+ #endif
+@@ -129,7 +137,11 @@ void OMPStream<T>::mul()
+   int array_size = this->array_size;
+   T *b = this->b;
+   T *c = this->c;
++#ifdef USE_LOOP
++  #pragma omp target teams loop
++#else
+   #pragma omp target teams distribute parallel for simd
++#endif
+ #else
+   #pragma omp parallel for
+ #endif
+@@ -152,7 +164,11 @@ void OMPStream<T>::add()
+   T *a = this->a;
+   T *b = this->b;
+   T *c = this->c;
++#ifdef USE_LOOP
++  #pragma omp target teams loop
++#else
+   #pragma omp target teams distribute parallel for simd
++#endif
+ #else
+   #pragma omp parallel for
+ #endif
+@@ -177,7 +193,11 @@ void OMPStream<T>::triad()
+   T *a = this->a;
+   T *b = this->b;
+   T *c = this->c;
++#ifdef USE_LOOP
++  #pragma omp target teams loop
++#else
+   #pragma omp target teams distribute parallel for simd
++#endif
+ #else
+   #pragma omp parallel for
+ #endif
+@@ -202,7 +222,11 @@ void OMPStream<T>::nstream()
+   T *a = this->a;
+   T *b = this->b;
+   T *c = this->c;
++#ifdef USE_LOOP
++  #pragma omp target teams loop
++#else
+   #pragma omp target teams distribute parallel for simd
++#endif
+ #else
+   #pragma omp parallel for
+ #endif
+@@ -226,7 +250,11 @@ T OMPStream<T>::dot()
+   int array_size = this->array_size;
+   T *a = this->a;
+   T *b = this->b;
++#ifdef USE_LOOP
++  #pragma omp target teams loop map(tofrom: sum) reduction(+:sum)
++#else
+   #pragma omp target teams distribute parallel for simd map(tofrom: sum) reduction(+:sum)
++#endif
+ #else
+   #pragma omp parallel for reduction(+:sum)
+ #endif
+diff --git a/OpenMP.make b/OpenMP.make
+index e81d252..fbdced6 100644
+--- a/OpenMP.make
++++ b/OpenMP.make
+@@ -4,7 +4,7 @@ define compiler_help
+ Set COMPILER to change flags (defaulting to GNU).
+ Available compilers are:
+   CLANG CRAY GNU GNU_PPC INTEL XL PGI
+-  NEC ARMCLANG AOMP FUJITSU
++  NEC ARMCLANG AOMP FUJITSU NVIDIA
+ 
+ Note: GCC on PPC requires -mcpu=native instead of -march=native so we have a special case for it
+ 
+@@ -51,6 +51,7 @@ COMPILER_PGI = pgc++
+ COMPILER_NEC = /opt/nec/ve/bin/nc++
+ COMPILER_AOMP = clang++
+ COMPILER_FUJITSU=FCC
++COMPILER_NVIDIA=nvc++
+ CXX = $(COMPILER_$(COMPILER))
+ 
+ FLAGS_GNU = -O3 -std=c++11 -march=native
+@@ -64,6 +65,7 @@ FLAGS_NEC = -O4 -finline -std=c++11
+ FLAGS_ARMCLANG = -O3 -std=c++11
+ FLAGS_AOMP = -O3 -std=c++11
+ FLAGS_FUJITSU=-Kfast -std=c++11 -KA64FX -KSVE -KARMV8_3_A -Kzfill=100 -Kprefetch_sequential=soft -Kprefetch_line=8 -Kprefetch_line_L2=16
++FLAGS_NVIDIA=-fast -std=c++11
+ CXXFLAGS = $(FLAGS_$(COMPILER))
+ 
+ # OpenMP flags for CPUs
+@@ -77,6 +79,7 @@ OMP_XL_CPU = -qsmp=omp -qthreaded
+ OMP_PGI_CPU = -mp
+ OMP_NEC_CPU = -fopenmp
+ OMP_FUJITSU_CPU=-Kopenmp
++OMP_NVIDIA_CPU=-mp
+ 
+ # OpenMP flags for NVIDIA
+ OMP_CRAY_NVIDIA  = -DOMP_TARGET_GPU
+@@ -88,6 +91,7 @@ OMP_INTEL_CPU = -xHOST -qopt-streaming-stores=always -qopenmp
+ OMP_INTEL_INTEL_GPU = -DOMP_TARGET_GPU -qnextgen -fiopenmp -fopenmp-targets=spir64
+ 
+ OMP_AOMP_GPU = -DOMP_TARGET_GPU -fopenmp -fopenmp-targets=amdgcn-amd-amdhsa -Xopenmp-target=amdgcn-amd-amdhsa -march=gfx906
++OMP_NVIDIA_NVIDIA = -DOMP_TARGET_GPU -mp=gpu -gpu=$(NVARCH)
+ 
+ ifndef OMP_$(COMPILER)_$(TARGET)
+ $(error Targeting $(TARGET) with $(COMPILER) not supported)
