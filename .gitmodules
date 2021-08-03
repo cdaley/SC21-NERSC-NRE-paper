@@ -9,3 +9,7 @@
 	path = kokkos
 	url = https://github.com/kokkos/kokkos
 	branch = develop
+[submodule "berkeleygw-kernels-fortran"]
+	path = berkeleygw-kernels-fortran
+	url = https://gitlab.com/NERSC/nersc-proxies/berkeleygw-kernels-fortran
+	branch = master

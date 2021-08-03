@@ -35,9 +35,10 @@ if [ ! -d build_cuda_ompt ]; then
 fi
 cd ${HOME}
 
-if [ ! -d TestSNAP ]; then
-    git clone --single-branch --branch Kokkos-nvhpc https://github.com/rgayatri23/TestSNAP.git TestSNAP-Kokkos
-fi
+# NOTE - The clone is not needed since the repo is added as a submodule.
+#if [ ! -d TestSNAP ]; then
+#    git clone --single-branch --branch Kokkos-nvhpc https://github.com/rgayatri23/TestSNAP.git TestSNAP-Kokkos
+#fi
 
 cd TestSNAP
 
