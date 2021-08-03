@@ -1,0 +1,322 @@
++ lsb_release -a
++ uname -a
++ lscpu
++ cat /proc/meminfo
++ inxi -F -c0
+./collect_environment.sh: line 14: inxi: command not found
++ lsblk -a
++ lsscsi -s
++ module list
+++ /opt/cray/pe/modules/3.2.11.4/bin/modulecmd bash list
+Currently Loaded Modulefiles:
+  1) esslurm      2) cgpu/1.0     3) nvhpc/21.5   4) gcc/8.3.0
++ eval
++ nvidia-smi
++ lshw -short -quiet -sanitize
++ cat
+./collect_environment.sh: line 19: lshw: command not found
++ lspci
+./collect_environment.sh: line 19: lspci: command not found
+jpg=01;35:*.jpeg=01;35:*.mkv=01;35:*.mng=01;35:*.mov=01;35:*.mp4=01;35:*.mpg=01;35:*.pcx=01;35:*.pbm=01;35:*.pgm=01;35:*.png=01;35:*.ppm=01;35:*.svg=01;35:*.tga=01;35:*.tif=01;35:*.webm=01;35:*.webp=01;35:*.wmv=01;35:*.xbm=01;35:*.xcf=01;35:*.xpm=01;35:*.aiff=00;32:*.ape=00;32:*.au=00;32:*.flac=00;32:*.m4a=00;32:*.mid=00;32:*.mp3=00;32:*.mpc=00;32:*.ogg=00;32:*.voc=00;32:*.wav=00;32:*.wma=00;32:*.wv=00;32:
+LD_LIBRARY_PATH=/usr/common/software/sles15_cgpu/gcc/8.3.0/lib64:/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/comm_libs/nvshmem/lib:/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/comm_libs/nccl/lib:/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/math_libs/lib64:/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/compilers/lib:/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/cuda/lib64:/opt/esslurm/lib64:/usr/lib64
+CSHRCREAD=true
+HOSTTYPE=x86_64
+SRUN_DEBUG=3
+SLURM_STEP_ID=4294967290
+SLURM_NODEID=0
+SLURM_TASK_PID=84760
+PRGENVMODULES=PrgEnv-cray:PrgEnv-gnu:PrgEnv-intel:PrgEnv-pgi
+SSH_CONNECTION=157.131.167.187 57917 128.55.224.40 22
+LESSCLOSE=lessclose.sh %s %s
+XKEYSYMDB=/usr/X11R6/lib/X11/XKeysymDB
+SLURM_PRIO_PROCESS=0
+LIBGL_ALWAYS_INDIRECT=1
+_=/usr/bin/env
+TZ=US/Pacific
+SLURM_SUBMIT_DIR=/global/cscratch1/sd/USER/SC-NRE-paper/BabelStream
+SOFT=/global/homes/r/USER/soft
+WINDOWMANAGER=/usr/bin/gnome
+LESS=-M -I -R
+JAVA_ROOT=/usr/lib64/jvm/java
+HOSTNAME=cori10
+SLURM_PMI2_STEP_NODES=cgpu19
+OLDPWD=/global/homes/r/USER
+CSHEDIT=emacs
+SLURM_CPUS_PER_TASK=16
+SLURM_STEPID=4294967290
+SLURM_SRUN_COMM_HOST=128.55.144.140
+GPG_TTY=/dev/pts/2
+LESS_ADVANCED_PREPROCESSOR=no
+COLORTERM=1
+ZAP_LIBPATH=/opt/ovis/lib64/ovis-ldms
+DVS_MAXNODES=1__
+FPATH=:/opt/cray/pe/modules/3.2.11.4/init/sh_funcs/no_redirect:/opt/cray/pe/modules/3.2.11.4/init/sh_funcs/no_redirect:/opt/cray/pe/modules/3.2.11.4/init/sh_funcs/no_redirect:/opt/cray/pe/modules/3.2.11.4/init/sh_funcs/no_redirect
+NVHPC_VERSION=21.5
+ROCR_VISIBLE_DEVICES=0
+JAVA_HOME=/usr/lib64/jvm/java
+SLURM_PROCID=0
+SLURM_JOB_GID=73349
+MACHTYPE=x86_64-suse-linux
+SLURM_PMI2_PROC_MAPPING=(vector,(0,1,1))
+GNU_VERSION=8.3.0
+SLURMD_NODENAME=cgpu19
+HUGETLB_VERBOSE=0
+MINICOM=-c on
+SLURM_TASKS_PER_NODE=1
+QT_SYSTEM_DIR=/usr/share/desktop-data
+OSTYPE=linux
+SLURM_JOB_RESERVATION=gpu_hackathon_dgx
+CC=/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/compilers/bin/nvc
+XDG_SESSION_ID=3215
+SLURM_NNODES=1
+USER=USER
+PAGER=less
+SLURM_LAUNCH_NODE_IPADDR=128.55.144.140
+MODULE_VERSION=3.2.11.4
+MAN_POSIXLY_CORRECT=1
+TOOLMODULES=apprentice:apprentice2:atp:chapel:cray-lgdb:cray-snplauncher:craypat:craypkg-gen:ddt:gdb:iobuf:papi:perftools:perftools-lite:stat:totalview:xt-craypat:xt-lgdb:xt-papi:xt-totalview
+SLURM_STEP_TASKS_PER_NODE=1
+KSH_AUTOLOAD=1
+MORE=-sl
+SLURM_GPUS=1
+GCC_VERSION=8.3.0
+PWD=/global/homes/r/USER/soft
+TARGETMODULES=craype-abudhabi:craype-abudhabi-cu:craype-accel-host:craype-accel-nvidia20:craype-accel-nvidia30:craype-accel-nvidia35:craype-barcelona:craype-broadwell:craype-haswell:craype-hugepages128K:craype-hugepages128M:craype-hugepages16M:craype-hugepages256M:craype-hugepages2M:craype-hugepages32M:craype-hugepages4M:craype-hugepages512K:craype-hugepages512M:craype-hugepages64M:craype-hugepages8M:craype-intel-knc:craype-interlagos:craype-interlagos-cu:craype-istanbul:craype-ivybridge:craype-mc12:craype-mc8:craype-mic-knl:craype-network-aries:craype-network-gemini:craype-network-infiniband:craype-network-none:craype-network-seastar:craype-sandybridge:craype-shanghai:craype-target-compute_node:craype-target-local_host:craype-target-native:craype-xeon:xtpe-barcelona:xtpe-interlagos:xtpe-interlagos-cu:xtpe-istanbul:xtpe-mc12:xtpe-mc8:xtpe-network-gemini:xtpe-network-seastar:xtpe-shanghai:xtpe-target-native:xtpe-xeon
+SLURM_JOB_NODELIST=cgpu19
+GCC_ROOT=/usr/common/software/sles15_cgpu/gcc/8.3.0
+HOME=/global/homes/r/USER
+SLURM_CLUSTER_NAME=escori
+PELOCAL_PRGENV=true
+NERSC_HOST=cori
+SLURM_NODELIST=cgpu19
+LQCD=/global/cscratch1/sd/USER/LQCD
+HOST=cori10
+SSH_CLIENT=157.131.167.187 50830 22
+CUDA_HOME=/usr/common/software/sles15_cgpu/cuda/11.3.0
+XNLSPATH=/usr/share/X11/nls
+CPATH=/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/comm_libs/nvshmem/include:/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/comm_libs/nccl/include:/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/math_libs/include
+TMUX=/run/tmux/73349/default,60104,12
+SDK_HOME=/usr/lib64/jvm/java
+F77=/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/compilers/bin/nvfortran
+SLURM_JOB_CPUS_PER_NODE=16
+BASH_ENV=/global/homes/r/USER/.bashrc
+XDG_DATA_DIRS=/usr/share
+SLURM_TOPOLOGY_ADDR=cgpu19
+LIBGL_DEBUG=quiet
+SLURM_WORKING_CLUSTER=escori:corique01-144:6820:9216:109
+JDK_HOME=/usr/lib64/jvm/java
+SLURM_STEP_NODELIST=cgpu19
+SLURM_JOB_NAME=interactive
+SLURM_SRUN_COMM_PORT=64121
+PROFILEREAD=true
+TMPDIR=/tmp
+LIBRARY_PATH=/usr/common/software/sles15_cgpu/gcc/8.3.0/lib64
+SLURM_JOB_GPUS=1
+SLURM_JOBID=2127228
+RCLOCAL_PRGENV=true
+USERMODULES=PrgEnv-cray:PrgEnv-gnu:PrgEnv-intel:PrgEnv-pathscale:PrgEnv-pgi:acml:alps:apprentice:apprentice2:atp:blcr:cce:chapel:cray-ccdb:cray-fftw:cray-ga:cray-hdf5:cray-hdf5-parallel:cray-lgdb:cray-libsci:cray-libsci_acc:cray-mpich:cray-mpich-compat:cray-mpich2:cray-netcdf:cray-netcdf-hdf5parallel:cray-parallel-netcdf:cray-petsc:cray-petsc-complex:cray-shmem:cray-snplauncher:cray-tpsl:cray-trilinos:craypat:craype:craypkg-gen:cudatoolkit:ddt:fftw:ga:gcc:hdf5:hdf5-parallel:intel:iobuf:java:lgdb:libfast:libsci_acc:mpich1:netcdf:netcdf-hdf5parallel:netcdf-nofsync:netcdf-nofsync-hdf5parallel:ntk:onesided:papi:parallel-netcdf:pathscale:perftools:perftools-lite:petsc:petsc-complex:pgi:pmi:stat:totalview:tpsl:trilinos:xt-asyncpe:xt-craypat:xt-lgdb:xt-libsci:xt-mpich2:xt-mpt:xt-papi:xt-shmem:xt-totalview
+LDMSD_PLUGIN_LIBPATH=/opt/ovis/lib64/ovis-ldms
+LOADEDMODULES=esslurm:cgpu/1.0:nvhpc/21.5:gcc/8.3.0
+FC=/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/compilers/bin/nvfortran
+CFS=/global/cfs/cdirs
+SCRATCH=/global/cscratch1/sd/USER
+PE_HDF5_DEFAULT_REQUIRED_PRODUCTS=PE_MPICH
+LIBRARYMODULES=acml:alps:cray-dwarf:cray-fftw:cray-ga:cray-hdf5:cray-hdf5-parallel:cray-libsci:cray-libsci_acc:cray-mpich:cray-mpich-abi:cray-mpich2:cray-netcdf:cray-netcdf-hdf5parallel:cray-parallel-netcdf:cray-petsc:cray-petsc-complex:cray-shmem:cray-tpsl:cray-trilinos:cudatoolkit:fftw:ga:hdf5:hdf5-parallel:iobuf:libfast:netcdf:netcdf-hdf5parallel:ntk:onesided:papi:petsc:petsc-complex:pmi:tpsl:trilinos:xt-libsci:xt-mpich2:xt-mpt:xt-papi
+SLURM_NODE_ALIASES=(null)
+INTEL_LICENSE_FILE=28518@crayintel.licenses.nersc.gov:28518@intel.licenses.nersc.gov
+SLURM_JOB_QOS=resv_shared
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+SSH_TTY=/dev/pts/0
+FROM_HEADER=
+MAIL=/var/spool/mail/USER
+SLURM_CPUS_ON_NODE=16
+CXX=/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/compilers/bin/nvc++
+SLURM_JOB_NUM_NODES=1
+LESSKEY=/etc/lesskey.bin
+CRAY_SITE_LIST_DIR=/etc/opt/cray/pe/modules
+SHELL=/bin/bash
+TERM=screen
+CSCRATCH=/global/cscratch1/sd/USER
+SLURM_JOB_UID=73349
+LS_OPTIONS=-N --color=none -T 0
+XCURSOR_THEME=DMZ
+SLURM_JOB_PARTITION=resv_shared
+KOKKOS=/global/homes/r/USER/Kokkos
+SLURM_PTY_WIN_ROW=62
+NVHPC=/usr/common/software/sles15_cgpu/nvhpc/21.5
+SLURM_JOB_USER=USER
+CUDA_VISIBLE_DEVICES=0
+SLURM_PTY_WIN_COL=273
+TMUX_PANE=%68
+SHLVL=5
+SLURM_SUBMIT_HOST=cori10
+PYTHONPATH=/opt/mods/lib/python3.6/site-packages:/opt/ovis/lib/python3.6/site-packages
+SLURM_JOB_ACCOUNT=m3502
+MANPATH=/usr/common/software/sles15_cgpu/gcc/8.3.0/share/man:/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/compilers/man:/usr/common/software/man:/usr/common/nsg/man:/usr/local/man:/usr/share/man:/usr/man:/opt/cray/share/man:/opt/cray/share/man:/opt/cray/share/man:/opt/cray/share/man
+SLURM_STEP_LAUNCHER_PORT=64121
+F90=/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/compilers/bin/nvfortran
+MODULEPATH=/global/common/software/nersc/sles15_cgpu/extra_modulefiles:/opt/cray/pe/craype-targets/default/modulefiles:/opt/cray/pe/modulefiles:/opt/cray/modulefiles:/opt/modulefiles:/global/common/software/nersc/cle7/modulefiles:/global/common/software/nersc/cle7/extra_modulefiles:/usr/common/ftg/modulefiles
+SLURM_PTY_PORT=64120
+SLURM_PMI2_SRUN_PORT=41093
+SLURM_GTIDS=0
+LOGNAME=USER
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/73349/bus
+XDG_RUNTIME_DIR=/run/user/73349
+MODULE_VERSION_STACK=3.2.11.4
+JRE_HOME=/usr/lib64/jvm/java
+MPICH_MPIIO_DVS_MAXNODES=28
+XDG_CONFIG_DIRS=/etc/xdg
+PATH=/usr/common/software/sles15_cgpu/gcc/8.3.0/bin:/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/compilers/bin:/usr/common/software/sles15_cgpu/nvhpc/21.5/Linux_x86_64/21.5/cuda/bin:/opt/esslurm/bin:/global/homes/r/USER/.local/cmake/bin/:/global/homes/r/USER/.local/vim/bin/:/global/homes/r/USER/screen-4.6.2/_build/bin/:/usr/common/software/bin:/usr/common/nsg/bin:/opt/ovis/bin:/opt/ovis/sbin:/usr/local/bin:/usr/bin:/bin:/usr/lib/mit/bin:/usr/lib/mit/sbin
+SLURM_JOB_ID=2127228
+JAVA_BINDIR=/usr/lib64/jvm/java/bin
+_LMFILES_=/global/common/software/nersc/cle7/extra_modulefiles/esslurm:/global/common/software/nersc/cle7/extra_modulefiles/cgpu/1.0:/global/common/software/nersc/sles15_cgpu/extra_modulefiles/nvhpc/21.5:/global/common/software/nersc/sles15_cgpu/extra_modulefiles/gcc/8.3.0
+SLURM_STEP_NUM_TASKS=1
+G_BROKEN_FILENAMES=1
+HISTSIZE=1000
+SLURM_JOB_CPUS_PER_NODE_PACK_GROUP_0=16
+SLURM_STEP_NUM_NODES=1
+CPP=cpp
+CPU=x86_64
+SLURM_LOCALID=0
+CVS_RSH=ssh
+GPU_DEVICE_ORDINAL=0
+LESSOPEN=lessopen.sh %s
+MPICH_GNI_ROUTING_MODE=ADAPTIVE_3
+BASH_FUNC_module%%=() {  eval `/opt/cray/pe/modules/3.2.11.4/bin/modulecmd bash $*`
+}
+LSB Version:	n/a
+Distributor ID:	openSUSE
+Description:	openSUSE Leap 15.0
+Release:	15.0
+Codename:	n/a
+Linux cgpu19 4.12.14-lp150.12.82-default #1 SMP Tue Nov 12 16:32:38 UTC 2019 (c939e24) x86_64 x86_64 x86_64 GNU/Linux
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              256
+On-line CPU(s) list: 0-255
+Thread(s) per core:  2
+Core(s) per socket:  64
+Socket(s):           2
+NUMA node(s):        8
+Vendor ID:           AuthenticAMD
+CPU family:          23
+Model:               49
+Model name:          AMD EPYC 7742 64-Core Processor
+Stepping:            0
+CPU MHz:             1500.000
+CPU max MHz:         2250.0000
+CPU min MHz:         1500.0000
+BogoMIPS:            4491.54
+Virtualization:      AMD-V
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            512K
+L3 cache:            16384K
+NUMA node0 CPU(s):   0-15,128-143
+NUMA node1 CPU(s):   16-31,144-159
+NUMA node2 CPU(s):   32-47,160-175
+NUMA node3 CPU(s):   48-63,176-191
+NUMA node4 CPU(s):   64-79,192-207
+NUMA node5 CPU(s):   80-95,208-223
+NUMA node6 CPU(s):   96-111,224-239
+NUMA node7 CPU(s):   112-127,240-255
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_l2 mwaitx cpb cat_l3 cdp_l3 hw_pstate sme ssbd sev ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 cqm rdt_a rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local clzero irperf xsaveerptr arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif umip rdpid overflow_recov succor smca
+MemTotal:       1055857836 kB
+MemFree:        1030118020 kB
+MemAvailable:   1015526884 kB
+Buffers:          166128 kB
+Cached:          1259468 kB
+SwapCached:         9028 kB
+Active:          2518276 kB
+Inactive:         808956 kB
+Active(anon):    1775484 kB
+Inactive(anon):   132596 kB
+Active(file):     742792 kB
+Inactive(file):   676360 kB
+Unevictable:     8388688 kB
+Mlocked:         8388688 kB
+SwapTotal:      134217724 kB
+SwapFree:       134174460 kB
+Dirty:              6416 kB
+Writeback:           368 kB
+AnonPages:      10287080 kB
+Mapped:          1270696 kB
+Shmem:              6840 kB
+Slab:            3147816 kB
+SReclaimable:     439420 kB
+SUnreclaim:      2708396 kB
+KernelStack:       82960 kB
+PageTables:        41716 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    662146640 kB
+Committed_AS:   14244584 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   8550400 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:    26700932 kB
+DirectMap2M:    570828800 kB
+DirectMap1G:    476053504 kB
+NAME        MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
+loop0         7:0    0  4.9G  0 loop  
+loop1         7:1    0 33.6G  0 loop  /var/opt/cray/imps-image-binding/PE_x86_64/squash_mounts/squashfs_soHyM6_mount_point
+loop2         7:2    0        1 loop  
+loop3         7:3    0        0 loop  
+loop4         7:4    0        0 loop  
+loop5         7:5    0        0 loop  
+loop6         7:6    0        0 loop  
+loop7         7:7    0        0 loop  
+sr0          11:0    1 1024M  0 rom   
+nvme1n1     259:0    0  1.8T  0 disk  
+|-nvme1n1p1 259:2    0  511M  0 part  /boot/efi
+|-nvme1n1p2 259:3    0    2G  0 part  /boot
+|-nvme1n1p3 259:4    0   20G  0 part  
+|-nvme1n1p4 259:17   0  256G  0 part  /tmp
+`-nvme1n1p5 259:21   0  128G  0 part  [SWAP]
+nvme2n1     259:1    0  1.8T  0 disk  
+|-nvme2n1p1 259:7    0   10G  0 part  /var/crash
+`-nvme2n1p2 259:8    0  1.8T  0 part  /var/opt/cray/persistent
+nvme0n1     259:9    0  3.5T  0 disk  
+`-nvme0n1p1 259:12   0  3.5T  0 part  
+  `-md0       9:0    0   14T  0 raid0 /var/opt/nersc/nvme
+nvme4n1     259:10   0  3.5T  0 disk  
+`-nvme4n1p1 259:13   0  3.5T  0 part  
+  `-md0       9:0    0   14T  0 raid0 /var/opt/nersc/nvme
+nvme3n1     259:11   0  3.5T  0 disk  
+`-nvme3n1p1 259:14   0  3.5T  0 part  
+  `-md0       9:0    0   14T  0 raid0 /var/opt/nersc/nvme
+nvme5n1     259:15   0  3.5T  0 disk  
+`-nvme5n1p1 259:16   0  3.5T  0 part  
+  `-md0       9:0    0   14T  0 raid0 /var/opt/nersc/nvme
+[0:0:0:0]    cd/dvd  AMI      Virtual CDROM0   1.00  /dev/sr0        -
+Tue Aug  3 11:16:21 2021       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.102.04   Driver Version: 450.102.04   CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  A100-SXM4-40GB      On   | 00000000:0F:00.0 Off |                    0 |
+| N/A   26C    P0    51W / 400W |      0MiB / 40537MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
