@@ -18,20 +18,17 @@ RUN="srun -n 1 -c 16 --cpu-bind=cores"
 
 HOME=$(pwd)
 
-if [ ! -d kokkos ]; then
-    echo "Kokkos not found. Please run the Kokkos script first."
-    exit 1
-fi
-
 KOKKOS_PATH=$(pwd)/kokkos
 cd ${KOKKOS_PATH}
 
 if [ ! -d build_cuda_nvhpc ]; then
     echo "Cuda build of kokkos not found. Please run the Kokkos script first."
+    exit 1
 fi
 
 if [ ! -d build_cuda_ompt ]; then
     echo "OpenMPTarget build of kokkos not found. Please run the Kokkos script first."
+    exit 1
 fi
 cd ${HOME}
 
