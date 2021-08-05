@@ -13,7 +13,8 @@ export OMP_NUM_THREADS=1
 export OMP_PLACES=threads
 export OMP_PROC_BIND=spread
 
-RUN="srun -n 1 -c 10 --cpu-bind=cores"
+cpus=${SLURM_CPUS_PER_TASK:-32}
+RUN="srun -n 1 -c ${cpus} --cpu-bind=cores"
 
 KOKKOS_PATH=$(pwd)/kokkos
 
@@ -41,8 +42,8 @@ make -j8
 make install
 cd ..
 
-if [ ! -d build_cuda_nvhpc ]; then
-    rm -rf build_ompt_nvhp
+if [ -d build_ompt_nvhpc ]; then
+    rm -rf build_ompt_nvhpc
 fi
 mkdir build_ompt_nvhpc && cd build_ompt_nvhpc
 cmake -D CMAKE_BUILD_TYPE=Release \
@@ -56,7 +57,7 @@ cmake -D CMAKE_BUILD_TYPE=Release \
   ..
 make -j8
 make install
-./core/unit_test/KokkosCore_IncrementalTest_OPENMPTARGET
+${RUN} ./core/unit_test/KokkosCore_IncrementalTest_OPENMPTARGET
 cd ..
 
 cd ..
