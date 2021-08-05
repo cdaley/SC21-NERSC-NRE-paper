@@ -1,8 +1,8 @@
 #!/bin/bash
 module purge
 module load dgx
-module load nvhpc/21.7
-module load cuda/11.2.1
+module load nvhpc/21.3
+module load cuda/11.0.2
 module load cmake/3.18.2
 module load gcc/8.3.0
 module list

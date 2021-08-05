@@ -1,9 +1,8 @@
 #!/bin/bash
 module purge
-module load cgpu
-#module load dgx
-module load nvhpc/21.7
-module load cuda/11.2.1
+module load dgx
+module load nvhpc/21.3
+module load cuda/11.0.2
 module load cmake/3.18.2
 module load gcc/8.3.0
 module list
@@ -26,7 +25,7 @@ if [ ! -d build_cuda_nvhpc ]; then
     exit 1
 fi
 
-if [ ! -d build_cuda_ompt ]; then
+if [ ! -d build_ompt_nvhpc ]; then
     echo "OpenMPTarget build of kokkos not found. Please run the Kokkos script first."
     exit 1
 fi
@@ -44,7 +43,7 @@ cd TestSNAP
     fi
     mkdir build_cuda_nvhpc && cd build_cuda_nvhpc
     cmake -D CMAKE_BUILD_TYPE=Release \
-          -D CMAKE_CXX_COMPILER=${KOKKOS_PATH}/bin/nvcc_wrapper \
+          -D CMAKE_CXX_COMPILER=${KOKKOS_PATH}/install_cuda_nvhpc/bin/nvcc_wrapper \
           -D CMAKE_C_COMPILER=$(which gcc) \
           -D CMAKE_CXX_STANDARD=17 \
           -D CMAKE_CXX_EXTENSIONS=OFF \
