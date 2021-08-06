@@ -6,6 +6,12 @@
 #SBATCH -c 32
 #SBATCH -G 1
 
+echo "Building and running Babelstream..."
+./BabelStream_build_script.sh
+
+echo "Building and running BerkeleyGW (GPP)..."
+./BerkeleyGW_build_script.sh
+
 echo "Building and running Kokkos incremental tests..."
 ./Kokkos_build_script.sh
 

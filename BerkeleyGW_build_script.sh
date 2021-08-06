@@ -1,12 +1,4 @@
 #!/bin/bash -l
-#SBATCH -A m3502
-#SBATCH -N 1
-#SBATCH -t 0:30:00
-#SBATCH -C dgx
-#SBATCH -c 32
-#SBATCH -G 1
-#SBATCH --reservation=gpu_hackathon_dgx
-#SBATCH -q shared
 module purge
 module load dgx
 module load nvhpc/21.7
@@ -19,8 +11,10 @@ export OMP_NUM_THREADS=1
 export OMP_PLACES=threads
 export OMP_PROC_BIND=spread
 
+cpus=${SLURM_CPUS_PER_TASK:-32}
+RUN="srun -n 1 -c ${cpus} --cpu-bind=cores"
+
 FCFLAGS="-fast -Mpreprocess -Wall -Wextra -mp=gpu -gpu=cc80 -Minfo=mp,accel"
-RUN="srun -n 1 -c 16 --cpu-bind=cores"
 
 # NOTE - The clone is not needed since the repo is added as a submodule.
 #if [ ! -d berkeleygw-kernels-fortran ]; then

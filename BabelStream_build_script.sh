@@ -1,12 +1,4 @@
 #!/bin/bash -l
-#SBATCH -A m3502
-#SBATCH -N 1
-#SBATCH -t 0:30:00
-#SBATCH -C dgx
-#SBATCH -c 32
-#SBATCH -G 1
-#SBATCH --reservation=gpu_hackathon_dgx
-#SBATCH -q shared
 module purge
 module load dgx
 module load nvhpc/21.7
@@ -19,9 +11,11 @@ export OMP_NUM_THREADS=1
 export OMP_PLACES=threads
 export OMP_PROC_BIND=spread
 
+cpus=${SLURM_CPUS_PER_TASK:-32}
+RUN="srun -n 1 -c ${cpus} --cpu-bind=cores"
+
 # make -f OpenMP.make TARGET=NVIDIA NVARCH=cc80 COMPILER=NVIDIA
 CXXFLAGS="-Minfo=mp -fast -std=c++11 -DOMP -DOMP_TARGET_GPU -mp=gpu -gpu=cc80"
-RUN="srun -n 1 -c 16 --cpu-bind=cores"
 
 # make -f CUDA.make NVARCH=sm_80
 NVCCFLAGS="-std=c++11 -O3 --use_fast_math -arch=sm_80 -DCUDA"
