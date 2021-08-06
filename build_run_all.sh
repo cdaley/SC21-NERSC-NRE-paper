@@ -17,3 +17,6 @@ echo "Building and running Kokkos incremental tests..."
 
 echo "Building and running the Kokkos version of TestSNAP with both CUDA and OpenMPTarget backends..."
 ./TestSNAP_build_script.sh
+
+echo "Building and running the native OpenMP version of TestSNAP..."
+./TestSNAP_native_build_script.sh
