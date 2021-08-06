@@ -18,10 +18,10 @@ CPPFLAGS="-DREFDATA_TWOJ=14 -DOPENMP_TARGET"
 CXXFLAGS="-fast -std=c++11 -mp=gpu -gpu=cc80"
 
 # NOTE - The clone is not needed since the repo is added as a submodule.
-#if [ ! -d TestSNAP-native ]; then
-#    git clone --single-branch --branch OpenMP4.5 git@github.com:FitSNAP/TestSNAP.git TestSNAP-native
+#if [ ! -d TestSNAP_native ]; then
+#    git clone --single-branch --branch OpenMP4.5 git@github.com:FitSNAP/TestSNAP.git TestSNAP_native
 #fi
-cd TestSNAP-native/src
+cd TestSNAP_native/src
 
 nvc++ ${CPPFLAGS} ${CXXFLAGS} sna.cpp test_snap.cpp memory.cpp -o test_snap.exe
 
