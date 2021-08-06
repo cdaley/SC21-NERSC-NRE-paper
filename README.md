@@ -1,7 +1,7 @@
 # Description
 This repository contains artifacts for the SC21 paper titled "Non-Recurring Engineering (NRE) Best Practices: A Case Study with the NERSC/NVIDIA OpenMP Contract" (DOI=https://doi.org/10.1145/3458817.3476213).
 
-As each of the applications maintain their own GitHub/GitLab repositories, they are added here as a submodules.
+As each of the applications maintain their own GitHub/GitLab repositories, they are added here as submodules.
 
 # Clone the repository and its submodules
 In order to clone the repository use one of the following two approaches:
@@ -17,17 +17,17 @@ git submodule update --init --recursive
 ```
 
 # Running the benchmarks
-The collection of benchmarks can be built and run with a single script named `build_run_all.sh`. This script executes the individual benchmark scripts which have names similar to the benchmark. The individual benchmark scripts may be run independently. The scripts checkout the specific commit of each repository corresponding to the results presented in the paper. All the benchmarks are single process applications.
+The collection of benchmarks can be built and run with a single script named `build_run_all.sh`. This script executes the individual benchmark scripts, which are named according to the benchmark. The individual benchmark scripts may also be run independently. The scripts checkout the specific commit of each repository corresponding to the results presented in the paper. All the benchmarks are single process applications and have no MPI dependence.
 
-The scripts are primarily designed to be executed on the DGX nodes at NERSC under the Slurm job schedular. The DGX nodes have 2 64-core AMD Rome CPUs and 8 NVIDIA A100 GPUs. The scripts assume use of NVIDIA A100 GPUs and the NVIDIA HPC SDK compilers. One eighth of a DGX node is 16 cores (32 hyperthreads) and 1 GPU. Therefore each script runs Slurm job steps that use 32 CPUs, i.e. hyperthreads, and 1 GPU.
+The scripts are primarily designed to be executed on the DGX nodes at NERSC under the Slurm job scheduler. The DGX nodes have 2 64-core AMD Rome CPUs and 8 NVIDIA A100 GPUs. The scripts assume use of NVIDIA A100 GPUs and the NVIDIA HPC SDK compilers. One eighth of a DGX node is 16 cores (32 hyperthreads) and 1 GPU. Therefore each script runs Slurm job steps that use 32 CPUs, i.e. hyperthreads, and 1 GPU.
 
 > **_Note_** The TestSNAP build script `TestSNAP_build_script.sh` depends on Kokkos being installed first. Kokkos can be installed by executing the Kokkos build script `Kokkos_build_script.sh`.
 
 
 ### Babelstream
 
-The script `BabelStream_build_script.sh` builds and runs a patched version of Babelstream. Our patch `add_loop_directive_to_babelstream_8f9ca7.diff` adds an additional code variant using the OpenMP-5.0 "loop" directive. There are three versions of Babelstream tested: CUDA, OpenMP Target offload, and OpenMP Target offload using the "loop" directive. Each test is run 10 times. The performance metric of interest is the calculated memory bandwidth. The output should look like the following
-```
+The script `BabelStream_build_script.sh` builds and runs a patched version of Babelstream. Our patch `add_loop_directive_to_babelstream_8f9ca7.diff` adds an additional code variant using the OpenMP-5.0 "loop" directive. There are three versions of Babelstream tested: CUDA, OpenMP Target offload, and OpenMP Target offload using the "loop" directive. Each test is run 10 times. The performance metric of interest is the calculated memory bandwidth in MBytes/sec. The output should look like the following
+```console
 BabelStream
 Version: 3.4
 Implementation: OpenMP
@@ -45,7 +45,7 @@ Dot         1291747.459 0.00042     0.00043     0.00042
 
 ### BerkeleyGW
 
-The script `BerkeleyGW_build_script.sh` builds and runs the BerkeleyGW GPP mini application. There are 3 OpenMP target offload versions tested: OpenMP-4.5 directives, OpenMP-5.0 "loop" directive, and OpenMP-5.0 "loop" directive with a value specified for the thread_limit clause. The performance of each version is nearly the same when using NVIDIA HPC SDK 21.7. This was not the case with earlier compilers. Each test is run 10 times. The performance metric of interest is the execution time in seconds. The output should look like the following
+The script `BerkeleyGW_build_script.sh` builds and runs the BerkeleyGW GPP mini application. There are 3 OpenMP target offload versions tested: OpenMP-4.5 compute directives, OpenMP-5.0 "loop" directives, and OpenMP-5.0 "loop" directives with a value specified for the OpenMP thread_limit clause. The performance metric of interest is the execution time in seconds. The performance of each version is nearly the same when using NVIDIA HPC SDK 21.7. This was not the case with earlier compilers. Each test is run 10 times. The output should look like the following
 ```console
  nstart,nend            2            3
  ngpown,ncouls,ntband_dist         1385        11075          800
@@ -73,7 +73,7 @@ Kokkos is used by TestSNAP. Therefore, this script must be executed before `Test
 
 ### TestSNAP (Kokkos)
 
-The script `TestSNAP_build_script.sh` builds and runs the Kokkos version of TestSNAP with both CUDA and OpenMPTarget Kokkos backends. The key performance metric is referred to as the grind time and measures the time to advance 1 atom step. The script runs TestSNAP 10 times with the CUDA backend and 10 times with the OpenMPTarget backend. The output should look like the following
+The script `TestSNAP_build_script.sh` builds and runs the Kokkos version of TestSNAP with both CUDA and OpenMPTarget Kokkos backends. The key performance metric is referred to as the grind time and measures the time in milliseconds to advance 1 atom step. The script runs TestSNAP 10 times with the CUDA backend and 10 times with the OpenMPTarget backend. The output should look like the following
 ```console
 grind time = 0.0174961 [msec/atom-step]
 ```
@@ -84,4 +84,4 @@ The script `TestSNAP_native_build_script.sh` builds and runs a OpenMP target off
 
 
 # Hardware Configuration
-This repository contains a log file named `dgx_info.log` detailing the system we used to collect performance results. This system, named "Cori-DGX" in the paper, is 2 nodes of NVIDIA DGX with nodes consisting of 2 AMD Rome CPUs and 8 NVIDIA A100 GPUs. The log file shows the default environment on Cori-DGX. Where necessary, our build/run scripts contain the appropriate modulefile commands to use a non-default environment.
+This repository contains a log file in directory `hardware-configuration` named `dgx_info.log` detailing the system we used to collect performance results. This system, named "Cori-DGX" in the paper, is 2 nodes of NVIDIA DGX with nodes consisting of 2 AMD Rome CPUs and 8 NVIDIA A100 GPUs. The log file shows the default environment on Cori-DGX. Where necessary, our build/run scripts contain the appropriate modulefile commands to use a non-default environment.
