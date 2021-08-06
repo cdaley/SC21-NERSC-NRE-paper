@@ -1,20 +1,21 @@
 #!/bin/bash
-module purge
-module load dgx
-module load nvhpc/21.3
-module load cuda/11.0.2
-module load cmake/3.18.2
-module load gcc/8.3.0
-module list
+if [[ "${SLURM_CLUSTER_NAME}" == "escori" ]]; then
+    module purge
+    module load dgx
+    module load nvhpc/21.3
+    module load cuda/11.0.2
+    module load cmake/3.18.2
+    module load gcc/8.3.0
+    module list
+    cpus=${SLURM_CPUS_PER_TASK:-32}
+    RUN="srun -n 1 -c ${cpus} --cpu-bind=cores"
+fi
 set -x
 set -e
 
 export OMP_NUM_THREADS=1
 export OMP_PLACES=threads
 export OMP_PROC_BIND=spread
-
-cpus=${SLURM_CPUS_PER_TASK:-32}
-RUN="srun -n 1 -c ${cpus} --cpu-bind=cores"
 
 KOKKOS_PATH=$(pwd)/kokkos
 

@@ -6,17 +6,17 @@
 #SBATCH -c 32
 #SBATCH -G 1
 
-echo "Building and running Babelstream..."
+echo -e "\n\nBuilding and running Babelstream..."
 ./BabelStream_build_script.sh
 
-echo "Building and running BerkeleyGW (GPP)..."
+echo -e "\n\nBuilding and running BerkeleyGW (GPP)..."
 ./BerkeleyGW_build_script.sh
 
-echo "Building and running Kokkos incremental tests..."
+echo -e "\n\nBuilding and running Kokkos incremental tests..."
 ./Kokkos_build_script.sh
 
-echo "Building and running the Kokkos version of TestSNAP with both CUDA and OpenMPTarget backends..."
+echo -e "\n\nBuilding and running the Kokkos version of TestSNAP with both CUDA and OpenMPTarget backends..."
 ./TestSNAP_build_script.sh
 
-echo "Building and running the native OpenMP version of TestSNAP..."
+echo -e "\n\nBuilding and running the native OpenMP version of TestSNAP..."
 ./TestSNAP_native_build_script.sh

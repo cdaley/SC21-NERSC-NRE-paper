@@ -17,7 +17,9 @@ git submodule update --init --recursive
 ```
 
 # Running the benchmarks
-A combined build and run script is provided for each of the applications and is named with the application name as the prefix. The build scripts are tuned for NVIDIA's A100 architecture. The build scripts checkout the specific commit of each repository whose results are presented in the paper. There is a convenience script named `build_run_all.sh` which executes each of the individual scripts.
+The collection of benchmarks can be built and run with a single script named `build_run_all.sh`. This script executes the individual benchmark scripts which have names similar to the benchmark. The individual benchmark scripts may be run independently. The scripts checkout the specific commit of each repository corresponding to the results presented in the paper. All the benchmarks are single process applications.
+
+The scripts are primarily designed to be executed on the DGX nodes at NERSC under the Slurm job schedular. The DGX nodes have 2 64-core AMD Rome CPUs and 8 NVIDIA A100 GPUs. The scripts assume use of NVIDIA A100 GPUs and the NVIDIA HPC SDK compilers. One eighth of a DGX node is 16 cores (32 hyperthreads) and 1 GPU. Therefore each script runs Slurm job steps that use 32 CPUs, i.e. hyperthreads, and 1 GPU.
 
 > **_Note_** The TestSNAP build script `TestSNAP_build_script.sh` depends on Kokkos being installed first. Kokkos can be installed by executing the Kokkos build script `Kokkos_build_script.sh`.
 
@@ -43,7 +45,7 @@ Dot         1291747.459 0.00042     0.00043     0.00042
 
 ### BerkeleyGW
 
-The script `BerkeleyGW_build_script.sh` builds and runs the BerkeleyGW GPP mini application. The application is run 10 times. The performance metric of interest is the execution time in seconds. The output should look like the following
+The script `BerkeleyGW_build_script.sh` builds and runs the BerkeleyGW GPP mini application. There are 3 OpenMP target offload versions tested: OpenMP-4.5 directives, OpenMP-5.0 "loop" directive, and OpenMP-5.0 "loop" directive with a value specified for the thread_limit clause. The performance of each version is nearly the same when using NVIDIA HPC SDK 21.7. This was not the case with earlier compilers. Each test is run 10 times. The performance metric of interest is the execution time in seconds. The output should look like the following
 ```console
  nstart,nend            2            3
  ngpown,ncouls,ntband_dist         1385        11075          800
@@ -75,6 +77,11 @@ The script `TestSNAP_build_script.sh` builds and runs the Kokkos version of Test
 ```console
 grind time = 0.0174961 [msec/atom-step]
 ```
+
+### TestSNAP (native OpenMP)
+
+The script `TestSNAP_native_build_script.sh` builds and runs a OpenMP target offload version of TestSNAP. Here, OpenMP target offload is used directly instead of through Kokkos. The key performance metric and application output is the same as the Kokkos version of TestSNAP.
+
 
 # Hardware Configuration
 This repository contains a log file named `dgx_info.log` detailing the system we used to collect performance results. This system, named "Cori-DGX" in the paper, is 2 nodes of NVIDIA DGX with nodes consisting of 2 AMD Rome CPUs and 8 NVIDIA A100 GPUs. The log file shows the default environment on Cori-DGX. Where necessary, our build/run scripts contain the appropriate modulefile commands to use a non-default environment.
