@@ -85,3 +85,7 @@ The script `TestSNAP_native_build_script.sh` builds and runs a OpenMP target off
 
 # Hardware Configuration
 This repository contains a log file in directory `hardware-configuration` named `dgx_info.log` detailing the system we used to collect performance results. This system, named "Cori-DGX" in the paper, is 2 nodes of NVIDIA DGX with nodes consisting of 2 AMD Rome CPUs and 8 NVIDIA A100 GPUs. The log file shows the default environment on Cori-DGX. Where necessary, our build/run scripts contain the appropriate modulefile commands to use a non-default environment.
+
+
+# Acknowledgements
+This research used resources of the National Energy Research Scientific Computing Center (NERSC), a U.S. Department of Energy Office of Science User Facility operated under Contract No. DE-AC02-05CH11231.
