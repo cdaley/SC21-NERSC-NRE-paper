@@ -38,7 +38,7 @@ cd ${START}
 #fi
 
 cd TestSNAP
-git checkout 172c82ba6c16abc7cb4f09c84689bef898eb130b
+git checkout 29cfb02164152eb1c4a3e5bf55f679deb04e9205
 
 if [ -d build_cuda_nvhpc ]; then
     rm -rf build_cuda_nvhpc
