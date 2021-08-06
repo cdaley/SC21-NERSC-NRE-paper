@@ -13,3 +13,7 @@
 	path = berkeleygw-kernels-fortran
 	url = https://gitlab.com/NERSC/nersc-proxies/berkeleygw-kernels-fortran
 	branch = master
+[submodule "TestSNAP_native"]
+	path = TestSNAP_native
+	url = https://github.com/FitSNAP/TestSNAP
+	branch = OpenMP4.5
