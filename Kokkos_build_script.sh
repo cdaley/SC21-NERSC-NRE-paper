@@ -3,7 +3,7 @@ if [[ "${SLURM_CLUSTER_NAME}" == "escori" ]]; then
     module purge
     module load dgx
     module load nvhpc/21.3
-    module load cuda/11.0.2
+    module load cuda/11.1.1
     module load cmake/3.18.2
     module load gcc/8.3.0
     module list
