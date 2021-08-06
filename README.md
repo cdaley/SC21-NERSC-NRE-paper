@@ -45,7 +45,7 @@ Dot         1291747.459 0.00042     0.00043     0.00042
 
 ### BerkeleyGW
 
-The script `BerkeleyGW_build_script.sh` builds and runs the BerkeleyGW GPP mini application. There are 3 OpenMP target offload versions tested: OpenMP-4.5 compute directives, OpenMP-5.0 "loop" directives, and OpenMP-5.0 "loop" directives with a value specified for the OpenMP thread_limit clause. The performance metric of interest is the execution time in seconds. The performance of each version is nearly the same when using NVIDIA HPC SDK 21.7. This was not the case with earlier compilers. Each test is run 10 times. The output should look like the following
+The script `BerkeleyGW_build_script.sh` builds and runs the BerkeleyGW GPP mini application written in Fortran. There are 3 OpenMP target offload versions tested: OpenMP-4.5 compute directives, OpenMP-5.0 "loop" directives, and OpenMP-5.0 "loop" directives with a value specified for the OpenMP thread_limit clause. The performance metric of interest is the execution time in seconds. The performance of each version is nearly the same when using NVIDIA HPC SDK 21.7. This was not the case with earlier compilers. Each test is run 10 times. The output should look like the following
 ```console
  nstart,nend            2            3
  ngpown,ncouls,ntband_dist         1385        11075          800
