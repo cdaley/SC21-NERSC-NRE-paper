@@ -1,7 +1,18 @@
+Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
+
+This work is licensed under a
+[Creative Commons Attribution 4.0 International License][cc-by].
+
+[![CC BY 4.0][cc-by-image]][cc-by]
+
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
+[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
+[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
+
 # Description
 This repository contains artifacts for the SC21 paper titled "Non-Recurring Engineering (NRE) Best Practices: A Case Study with the NERSC/NVIDIA OpenMP Contract" (DOI=https://doi.org/10.1145/3458817.3476213).
 
-As each of the applications maintain their own GitHub/GitLab repositories, they are added here as submodules.
+As each of the applications maintain their own GitHub/GitLab repositories, they are added here as submodules. Please refer to the LICENSE files in each of the included repositories.
 
 # Clone the repository and its submodules
 In order to clone the repository use one of the following two approaches:
