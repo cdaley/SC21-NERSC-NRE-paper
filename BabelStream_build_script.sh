@@ -7,6 +7,15 @@ if [[ "${SLURM_CLUSTER_NAME}" == "escori" ]]; then
     module list
     cpus=${SLURM_CPUS_PER_TASK:-32}
     RUN="srun -n 1 -c ${cpus} --cpu-bind=cores"
+elif [[ "${SLURM_CLUSTER_NAME}" == "perlmutter" ]]; then
+    module load PrgEnv-nvidia/8.2.0
+    module load nvidia/21.9
+    module load cudatoolkit/21.9_11.4
+    module use $CFS/m1759/csdaley/Modules/perlmutter/modulefiles
+    module load nvhpc/22.2
+    module list
+    cpus=${SLURM_CPUS_PER_TASK:-32}
+    RUN="srun -n 1 -c ${cpus} --cpu-bind=cores"
 fi
 set -x
 set -e
@@ -29,6 +38,7 @@ ARGS="-n 1000" # Repeat 1000 times
 #fi
 
 cd BabelStream
+git checkout -- OMPStream.cpp OpenMP.make # Undo the patch if we already applied
 git checkout 8f9ca7baa77c874897e1691c895729a39d959012
 git apply ../add_loop_directive_to_babelstream_8f9ca7.diff
 

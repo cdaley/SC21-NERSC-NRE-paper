@@ -7,6 +7,15 @@ if [[ "${SLURM_CLUSTER_NAME}" == "escori" ]]; then
     module list
     cpus=${SLURM_CPUS_PER_TASK:-32}
     RUN="srun -n 1 -c ${cpus} --cpu-bind=cores"
+elif [[ "${SLURM_CLUSTER_NAME}" == "perlmutter" ]]; then
+    module load PrgEnv-nvidia/8.2.0
+    module load nvidia/21.9
+    module load cudatoolkit/21.9_11.4
+    module use $CFS/m1759/csdaley/Modules/perlmutter/modulefiles
+    module load nvhpc/22.2
+    module list
+    cpus=${SLURM_CPUS_PER_TASK:-32}
+    RUN="srun -n 1 -c ${cpus} --cpu-bind=cores"
 fi
 set -x
 set -e

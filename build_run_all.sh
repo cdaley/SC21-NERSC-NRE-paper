@@ -1,10 +1,13 @@
 #!/bin/bash -l
-#SBATCH -A nstaff
 #SBATCH -N 1
 #SBATCH -t 1:00:00
-#SBATCH -C dgx
-#SBATCH -c 32
-#SBATCH -G 1
+#SBATCH -C gpu
+#SBATCH -A nstaff_g
+#SBATCH --exclusive
+#SBATCH -c 128
+#SBATCH -G 4
+#SBATCH --job-name=openmp
+#SBATCH -q early_science
 
 echo -e "\n\nBuilding and running Babelstream..."
 ./BabelStream_build_script.sh
